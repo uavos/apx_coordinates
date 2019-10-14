@@ -1,5 +1,6 @@
 #include "apxcoordinates.h"
 
+#include <assert.h>
 #include "Dictionary/DictMandala.h"
 #include "Vehicles/Vehicles.h"
 #include "Vehicles/Vehicle.h"
@@ -12,7 +13,7 @@ ApxCoordinates::ApxCoordinates(Fact *parent):
     m_pitchPosVar(new Fact(this, "pitch_pos_var", "Gimbal pitch position var", "", Text)),
     m_targetLatVar(new Fact(this, "target_lat_var", "Target latitude var", "", Text)),
     m_targetLonVar(new Fact(this, "target_lon_var", "Target longitude var", "", Text)),
-    m_apply(new FactAction(this, "apply", "Apply", "", "", FactAction::ActionApply))
+    m_apply(new Fact(this, "apply", "Apply", "", Action))
 {
     m_yawPosVar->setValue("radar_dy");
     m_pitchPosVar->setValue("radar_dz");
@@ -23,7 +24,7 @@ ApxCoordinates::ApxCoordinates(Fact *parent):
     m_calculationTimer.setSingleShot(false);
     m_calculationTimer.start();
 
-    connect(m_apply.get(), &FactAction::triggered, this, &ApxCoordinates::onApplyTriggered);
+    connect(m_apply, &Fact::triggered, this, &ApxCoordinates::onApplyTriggered);
     connect(&m_calculationTimer, &QTimer::timeout, this, &ApxCoordinates::calculate);
 }
 
