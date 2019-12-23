@@ -33,4 +33,5 @@ INCLUDEPATH += /home/pavel/apx_sdk/include/ApxShared
 LIBS += -L/home/pavel/apx_sdk/lib \
     -lApxCore \
     -lApxData \
-    -ApxGcs
+    -lApxGcs \
+    -lApxShared
