@@ -8,7 +8,7 @@
 #include <QQuaternion>
 
 ApxCoordinates::ApxCoordinates(Fact *parent):
-    Fact(parent, "apx_coordinates", "Alexmos coordinates", "Alexmos target coordinates", Group),
+    Fact(parent, "apx_coordinates", "GSG140 coordinates", "GSG140 target coordinates", Group),
     m_yawPosVar(new Fact(this, "yaw_pos_var", "Gimbal yaw position var", "", Text)),
     m_pitchPosVar(new Fact(this, "pitch_pos_var", "Gimbal pitch position var", "", Text)),
     m_targetLatVar(new Fact(this, "target_lat_var", "Target latitude var", "", Text)),
